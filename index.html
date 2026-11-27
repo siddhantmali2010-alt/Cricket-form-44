@@ -1,64 +1,58 @@
+
+<!DOCTYPE html>
 <html>
+<head>
+<title>Player Registration</title>
+</head>
+<body>
+
+<h2>Player Registration Form</h2>
+
+<form id="playerForm">
+
+<label>Player Name</label>
+<input type="text" id="playerName" required>
+<br><br>
+
+<label>Team Name</label>
+<input type="text" id="teamName" required>
+<br><br>
+
+<label>Jersey Number</label>
+<input type="number" id="jersey" required>
+<br><br>
+
+<button type="submit">Submit</button>
+
+</form>
+
+<p id="result"></p>
+
 <script>
 document.getElementById("playerForm")
 .addEventListener("submit", function(e) {
 
 e.preventDefault();
 
-let name = document.getElementById("playerName").value;
-let team = document.getElementById("teamName").value;
-let jersey = document.getElementById("jersey").value;
-
-let player = {
-name: name,
-team: team,
-jersey: jersey
+let data = {
+name: document.getElementById("playerName").value,
+team: document.getElementById("teamName").value,
+jersey: document.getElementById("jersey").value
 };
 
-localStorage.setItem("player", JSON.stringify(player));
+fetch("https://script.google.com/macros/s/AKfycbz99LIZQkgYlOMkYjLkDbg4Pu1t_jOOLS86BwGLi5ooeZjnPIArf8RYf1Qm2rxBSsnP/exec", {
+method: "POST",
+mode: "no-cors",
+body: JSON.stringify(data)
+});
 
 document.getElementById("result").innerHTML =
-"Player Name: " + name +
-"<br>Team: " + team +
-"<br>Jersey Number: " + jersey;
+"Details Submitted Successfully!";
 
-alert("Player Details Saved Successfully!");
+document.getElementById("playerForm").reset();
 
 });
 </script>
 
-<body>
-  
-  <form id="playerForm">
-
-<label>Player Name</label>
-<input type="text" id="playerName" required>
-
-<label>Team Name</label>
-<input type="text" id="teamName" required>
-
-<label>Jersey Number</label>
-<input type="number" id="jersey" required>
-
-<button type="submit">Submit</button>
-
-</form>
-
-<h2>Saved Player Details</h2>
-<div id="result"></div>
-    
- 
-  
-  
-  
-  
-  
-  
-  
 </body>
-
-
-
-
-
 </html>
