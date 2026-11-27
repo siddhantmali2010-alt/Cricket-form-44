@@ -26,9 +26,11 @@
 
 </form>
 
-<p id="result"></p>
+<h2>Saved Player Details</h2>
+<div id="result"></div>
 
 <script>
+
 document.getElementById("playerForm")
 .addEventListener("submit", function(e) {
 
@@ -40,19 +42,21 @@ team: document.getElementById("teamName").value,
 jersey: document.getElementById("jersey").value
 };
 
-fetch("https://script.google.com/macros/s/AKfycbz99LIZQkgYlOMkYjLkDbg4Pu1t_jOOLS86BwGLi5ooeZjnPIArf8RYf1Qm2rxBSsnP/exec", {
+fetch("https://script.google.com/macros/s/AKfycbzclOOmMtZB4P7nmd5U3hzIBr0GP0OovfC6NR4ce3iXy2D2HdTq8sCtw1lko_LydtTz/exec", {
 method: "POST",
 mode: "no-cors",
 body: JSON.stringify(data)
 });
 
 document.getElementById("result").innerHTML =
-"Details Submitted Successfully!";
+"Player Details Submitted!";
 
 document.getElementById("playerForm").reset();
 
 });
+
 </script>
 
 </body>
 </html>
+
